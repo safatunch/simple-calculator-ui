@@ -1,0 +1,23 @@
+<nav class="navbar navbar bg-light px-4">
+    <a class="navbar-brand">GL Education</a>
+    <div>
+        <select class="form-control mr-sm-2 ml-6" [value]="activeTheme" (change)="switchTheme(themeSelect.value)" #themeSelect>
+        <option value="theme1">Theme 1</option>
+        <option value="theme2">Theme 2</option>
+        <option value="theme3">Theme 3</option>
+        </select>
+    </div>
+  </nav>
+  <div class="container pt-4">
+    <div class="d-flex justify-content-center">
+    <div class="card col-10 col-sm-6 col-md-5 col-lg-4 col-xl-3" (click)="openDialog()" style="cursor:pointer">
+        <img class="card-img-top" src="https://www.involve.me/assets/images/blog/how-to-create-a-simple-price-calculator-and-capture-more-leads/calculator-L.png" alt="Card image cap">
+        <div class="card-body">
+            <h4>Calculator</h4>
+          <p class="card-text">Use this awesome calculator to overcome your math problems!</p>
+        </div>
+      </div>
+    </div>
+<!-- <button class="bg-light" (click)="openDialog()">Open</button> -->
+
+</div>

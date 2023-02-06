@@ -1,0 +1,14 @@
+$theme-colors: (
+    "light":      #c0f4ed,
+    "dark":       #331c29,
+    "primary":    #2f4572,
+    "secondary":  #e32e2e,
+    "info":       #f29e70,
+    "success":    #24a964,
+    "warning":    #e4cc23,
+    "danger":     #f31e11,
+);
+
+
+$input-focus-border-color: blue;
+@import 'bootstrap/scss/bootstrap';

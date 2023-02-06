@@ -1,0 +1,43 @@
+$theme-colors: (
+    "light":      #d9dbeb,
+    "dark":       #141518,
+    "primary":    #4d3f86,
+    "secondary":  #d82551,
+    "info":       #d86827,
+    "success":    #17a061,
+    "warning":    #dfcb18,
+    "danger":     #832114,
+    "default":  rgb(77, 61, 61)
+);
+
+$modal-content-bg:rgb(180, 127, 127);
+$body-bg: #bbadad;
+$input-focus-border-color:rgb(92, 76, 76);
+$input-bg: rgb(177, 143, 143);
+$modal-content-color:rgb(83, 64, 64);
+
+$input-btn-focus-box-shadow:   1px 1px 10px rgb(109, 96, 96);
+$input-btn-border-color:      5px !default;
+$btn-border-with:5px !default;
+$border-radius: 0px !default;
+
+$border-style:                solid !default;
+$border-color:               black !default;
+
+$modal-fade-transform:              translate(0, 100px);
+$modal-show-transform:              none;
+$modal-transition:                  transform .3s ease-out;
+$modal-scale-transform:             scale(1.02);
+@import 'bootstrap/scss/bootstrap';
+
+
+.btn-default{
+  border:1px solid white;
+  box-shadow: 0 2px #999;
+}
+
+.btn:active {
+  background-color: black;
+  box-shadow: 0 0px #666;
+  transform: translateY(4px);
+}
