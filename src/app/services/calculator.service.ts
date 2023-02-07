@@ -1,6 +1,7 @@
 
 import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
+import { API_CONFIG } from 'src/configuration/api-config';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class CalculatorService{
 
   AddAsync(number: number, amount: number):Promise<number>{
     return new Promise<number>((resolve,reject)=>{
-      this.httpClient.get<number>("https://localhost:7233/SimpleCalculator/Add/"+number+"/"+amount)
+      this.httpClient.get<number>(API_CONFIG.add+number+"/"+amount)
       .subscribe({
         next: (number)=> resolve(number),
         error: (errordata)=>{
@@ -23,7 +24,7 @@ export class CalculatorService{
 
   SubtractAsync(number:number, amount:number):Promise<number>{
     return new Promise<number>((resolve,reject)=>{
-      this.httpClient.get<number>("https://localhost:7233/SimpleCalculator/Subtract/"+number+"/"+amount)
+      this.httpClient.get<number>(API_CONFIG.subtract + number+"/"+amount)
       .subscribe({
         next: (number)=> resolve(number),
         error: (errordata)=>{
