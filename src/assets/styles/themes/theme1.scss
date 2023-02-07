@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 $theme-colors: (
     "light":      #d9dbeb,
     "dark":       #141518,
@@ -9,6 +11,8 @@ $theme-colors: (
     "danger":     #832114,
     "default":  rgb(77, 61, 61)
 );
+
+$input-font-family: 'Righteous', cursive !default;
 
 $modal-content-bg:rgb(180, 127, 127);
 $body-bg: #bbadad;
@@ -28,6 +32,7 @@ $modal-fade-transform:              translate(0, 100px);
 $modal-show-transform:              none;
 $modal-transition:                  transform .3s ease-out;
 $modal-scale-transform:             scale(1.02);
+
 @import 'bootstrap/scss/bootstrap';
 
 
@@ -40,4 +45,11 @@ $modal-scale-transform:             scale(1.02);
   background-color: black;
   box-shadow: 0 0px #666;
   transform: translateY(4px);
+}
+.btn-footer-close{
+  background-color: unset !important;
+}
+
+.modal-footer{
+  background-color: unset !important;
 }

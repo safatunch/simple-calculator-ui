@@ -1,83 +1,3 @@
-<!-- <h1 mat-dialog-title>Calculator</h1>
-<div mat-dialog-content>
-  <div style="display: flex; flex-direction: column">
-    <input type="text" class="form-group"
-        readonly=""
-        [value]="operationDisplay"
-        style="text-align: right" />
-      <input
-      class="form-group"
-        *ngIf="!error; else errorTemplate"
-        readonly=""
-        [value]="result"
-        style="text-align: right"
-      />
-      <ng-template #errorTemplate>
-        <input class="form-group"
-          *ngIf="error"
-          readonly=""
-          [value]="error"
-          style="text-align: right; color: red"
-        />
-      </ng-template>
-    <div class="flex-row-container">
-      <div class="flex-row-container flex-reverse">
-        <div
-          class="flex-row-item"
-          *ngFor="let item of [].constructor(10); let i = index"
-        >
-          <button
-
-            style="height: 100%; width: 100%"
-            (click)="OnNumberClick(9 - i)"
-          >
-            {{ 9 - i }}
-          </button>
-        </div>
-        <div class="flex-row-item">
-          <button  style="height: 100%; width: 100%">C</button>
-        </div>
-        <div class="flex-row-item">
-          <button
-
-            style="height: 100%; width: 100%"
-            (click)="OnEqualClick()"
-          >
-            =
-          </button>
-        </div>
-      </div>
-      <div class="flex-col-container">
-        <button
-
-          style="height: 100%; width: 100%"
-          (click)="Backspace()"
-        >
-          <
-        </button>
-        <button
-
-          style="height: 100%; width: 100%"
-          (click)="OnOperatorClick('-')"
-        >
-          -
-        </button>
-        <button
-
-          style="height: 100%; width: 100%"
-          (click)="OnOperatorClick('+')"
-        >
-          +
-        </button>
-      </div>
-    </div>
-  </div>
-  <div mat-dialog-actions>
-    <button style="background-color: red"  mat-dialog-close="">
-      X
-    </button>
-  </div>
-</div> -->
 <div class="modal-header">
   <h4 class="modal-title">Calculator</h4>
   <button type="button" class="btn-close" aria-label="Close" (click)="CloseModal()"></button>
@@ -90,39 +10,57 @@
   </ng-template>
   <hr />
   <div class="col-12 d-block">
-    <div class="col-12">
+    <div class="col-12 my-1">
+
+  <div class="col-4 d-inline-block">
     <button
-    class="btn btn-default col-6 col-sm-3 d-inline-block fw-bold"
+    class="btn btn-default w-100 h-100 fw-bold calculator-btn "
     (click)="OnOperatorClick('+')">
     +
   </button>
+  </div>
+  <div class="col-4 d-inline-block">
     <button
-    class="btn btn-default col-6 col-sm-3 d-inline-block fw-bold"
+    class="btn btn-default w-100 h-100 fw-bold calculator-btn "
     (click)="OnOperatorClick('-')">
     -
   </button>
-
+  </div>
+  <div class="col-4 d-inline-block">
   <button
-  class="btn btn-default col-6 col-sm-3 d-inline-block fw-bold"
-  (click)="Backspace()">
+  class="btn btn-default w-100 h-100 fw-bold calculator-btn "
+  (click)="OnBackspaceClick()">
   <
-</button>
+</button></div>
+<div class="col-12 my-2">
+  <div class="col-6 d-inline-block ">
 <button
-class="btn btn-default col-6 col-sm-3 d-inline-block fw-bold"
+class="btn btn-default w-100 h-100 fw-bold calculator-btn "
 (click)="OnEqualClick()">
 =
 </button>
+  </div>
+  <div class="col-6 d-inline-block ">
+<button
+class="btn btn-default w-100 h-100  fw-bold calculator-btn "
+(click)="OnClearClick()">
+C
+</button>
+  </div>
+</div>
     </div>
     <div class="col-12">
+      <div class="col-4 d-inline-block "
+      *ngFor="let item of [].constructor(10); let i = index">
       <button
-        class="btn btn-default col-4 col-sm-4 d-inline-block"
-        *ngFor="let item of [].constructor(10); let i = index"
+        class="btn btn-default calculator-btn w-100 h-100"
         (click)="OnNumberClick(9 - i)">
         {{ 9 - i }}
       </button>
+    </div>
   </div>
   </div>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark"  (click)="CloseModal()">Close</button>
+  <button type="button" class="btn btn-outline-dark btn-footer-close"  (click)="CloseModal()">Close</button>
 </div>

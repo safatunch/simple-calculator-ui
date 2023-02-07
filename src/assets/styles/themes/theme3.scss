@@ -1,16 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
 
 $theme-colors: (
-    "light":      #e5e2e2,
-    "dark":       #a4a9a7,
-    "primary":    #262fd3,
-    "secondary":  #5e5cd7,
-    "info":       #55736f,
-    "success":    #1a995b,
-    "warning":    #dec81c,
-    "danger":     #ea220d,
+    "light":      #000000,
+    "dark":       #530c34,
+    "primary":    #2f4572,
+    "secondary":  #e32e2e,
+    "info":       #f29e70,
+    "success":    #24a964,
+    "warning":    #e4cc23,
+    "danger":     #f31e11,
+    "default":    black
 );
 
-$input-focus-border-color: green;
+
+$navbar-light-brand-color:               white;
+$body-color: white;
+$modal-content-bg:rgb(38, 37, 37);
+$body-bg: #363434;
+$input-focus-border-color:rgb(126, 130, 225);
+$input-bg: black;
+$modal-content-color:rgb(243, 235, 243);
+$modal-footer-border-color:         rgb(99, 95, 95);
+$modal-backdrop-bg:                 white;
+$input-color: yellow;
+
+$input-font-weight:  bold;
+$input-font-family: 'Orbitron', sans-serif !default;
+
+$border-style:                solid !default;
+$border-color:               black !default;
+
+$modal-fade-transform:              translate(0, 0px);
+$modal-show-transform:              none;
+$modal-transition:                  transform .3s ease-out;
+$modal-scale-transform:             scale(1.02);
+$card-bg-color: #F3767C !default;
 
 @import 'bootstrap/scss/bootstrap';
+
+
+.calculator-btn{
+  width:90% !important;
+  margin:5px 0px;
+}
+.card {
+  background-color: $card-bg-color;
+}
+
+.btn-footer-close{
+  background-color: #F3767C !important;
+}
+
+.modal-footer{
+  background-color: black !important;
+}

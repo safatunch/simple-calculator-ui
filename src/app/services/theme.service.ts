@@ -1,28 +1,28 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ThemeService {
-  public static default = 'theme-1';
+  public static default = "theme-1";
 
   public get current(): string {
-    return localStorage.getItem('theme') ?? ThemeService.default;
+    return localStorage.getItem("theme") ?? ThemeService.default;
   }
 
   public set current(value: string) {
-    localStorage.setItem('theme', value);
+    localStorage.setItem("theme", value);
     this.style.href = `/${value}.css`;
   }
 
   private readonly style: HTMLLinkElement;
 
   constructor() {
-    this.style = document.createElement('link');
-    this.style.rel = 'stylesheet';
+    this.style = document.createElement("link");
+    this.style.rel = "stylesheet";
     document.head.appendChild(this.style);
 
-    if (localStorage.getItem('theme') !== undefined) {
+    if (localStorage.getItem("theme") !== undefined) {
         this.style.href = `/${this.current}.css`;
     }
   }

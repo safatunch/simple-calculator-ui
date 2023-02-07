@@ -10,7 +10,7 @@ import { CalculatorService } from '../services/calculator.service';
 
 
 export class CalculatorComponent {
-  constructor(private calculationService: CalculatorService, private activeModal: NgbActiveModal) {
+  constructor(public calculationService: CalculatorService, public activeModal: NgbActiveModal) {
   }
 
   // was planning to implement history, but I think it is not necessary because of the time
@@ -22,7 +22,6 @@ export class CalculatorComponent {
   }
   set activeNumber(value: number) {
     this._activeNumber = value;
-    this.Calculate();
   }
 
   isNumberAdded: boolean = false;
@@ -52,6 +51,7 @@ export class CalculatorComponent {
     this.operationDisplay += digit;
     this.isNumberAdded = true;
     this.activeNumber = newNumber;
+    this.Calculate();
   }
 
   OnOperatorClick(operator: string) {
@@ -59,8 +59,9 @@ export class CalculatorComponent {
     if (this.isNumberAdded) {
       this.numberList.push(this.activeNumber);
 
-      if (this.numberList.length > 1) {
-        this.numberList.push(this.result)
+      if (this.numberList.length > 1)
+      {
+          this.numberList.push(this.result)
       }
 
       this.isNumberAdded = false;
@@ -76,24 +77,25 @@ export class CalculatorComponent {
     this.activeOperator = operator;
   }
 
-  Calculate() {
+  async Calculate() {
     if (this.CalculateRequestTimer) {
       clearTimeout(this.CalculateRequestTimer);
     }
 
     return new Promise<number>((resolve, reject) => {
-      this.CalculateRequestTimer = setTimeout(() => {
-        if (this.activeOperator == "+") {
+        this.CalculateRequestTimer = setTimeout(() => {
+      if (this.activeOperator == "+") {
           this.calculationService.AddAsync(this.GetPreviousNumber(), this.activeNumber)
-            .then((res: number) => successResult(res))
-            .catch((e: string) => this.error = e);
+            .then((res: number) => handleSuccess(res))
+            .catch((e: string) => reject(this.error = e));
         }
         else if (this.activeOperator == "-") {
           this.calculationService.SubtractAsync(this.GetPreviousNumber(), this.activeNumber)
-            .then((res: number) => successResult(res))
-            .catch((e: string) => this.error = e);
+            .then((res: number) => handleSuccess(res))
+            .catch((e: string) => reject(this.error = e));
         }
-        const successResult = (res: number) => {
+
+        const handleSuccess = (res: number) => {
           this.result = res;
           this.error = "";
           this.CalculateRequestTimer = undefined;
@@ -104,24 +106,36 @@ export class CalculatorComponent {
   }
 
 
-  Backspace() {
+  async OnBackspaceClick() {
     var number = parseInt(this.operationDisplay[this.operationDisplay.length - 1])
     // if outputs last char is an operator - don't remove
     if (!isNaN(number)) {
       this.operationDisplay = this.operationDisplay.slice(0, -1);
     }
     this.activeNumber = parseInt(this.activeNumber?.toString().slice(0, -1))
-    if (isNaN(this.activeNumber))
+    if (isNaN(this.activeNumber)){
       this.activeNumber = 0;
+      this.isNumberAdded=false;
+    }
+
+    await this.Calculate();
   }
 
-  OnEqualClick() {
-    this.Calculate()
-      .then(() => {
+  async OnEqualClick() {
+    var result = await this.Calculate()
         this.numberList = [];
-        this.activeNumber = this.result;
+        this.activeNumber = result;
         this.operationDisplay = this.activeNumber.toString();
-      })
+        this.activeOperator="+";
+  }
+
+  OnClearClick(){
+    this.numberList=[]
+    this.activeNumber=0;
+    this.operationDisplay="";
+    this.result=0;
+    this.error="";
+    this.activeOperator="+";
   }
 
   CloseModal() {
